@@ -8,8 +8,50 @@
     <title>Lab 2: Part 1</title>
   </head>
   <body>
-<div id="container">
+
  <h2>Lab 2.1: Client-side Templating</h2>
+ <div id="container">
+ <div class="loader">Loading...</div>
+
+<template id="display">
+{{#each searchResults}}
+<h4>Name: {{this.name}}</h4>
+<p>Location: {{this.location}}</p>
+<p>
+  Owner(s):
+    {{#each this.ownedBy}}
+    <ul>
+      <li>{{this}}</li>
+    </ul>
+    {{/each}}
+</p>
+<p><a href="{{this.yelpPage}}">Check us out on Yelp</a> </p>
+
+  {{#if this.acceptsApplePay}}
+<img src="apple.png" style="width: 40px;" alt="">
+  {{else}}
+<p>No Apply Pay</p>
+  {{/if}}
+<br>
+{{/each}}
+</template>
+
+
 </div>
+
+
+
+
+
+
+
+
+<script src="jquery-3.3.1.js"></script>
+<script src="moment.js"></script>
+<script src="handlebars-v4.0.11.js"></script>
+
+<script src="main.js"></script>
+
+
   </body>
 </html>
